@@ -1,5 +1,8 @@
 package mbuchatskyi.splitter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A splitter that can split a given image into many (at least 16) sub-images.
  * 
@@ -8,10 +11,11 @@ package mbuchatskyi.splitter;
  * 
  */
 public class Splitter {
-	private int[] image;
 	private int width;
 	private int height;
 
+	private int rows;
+	private int columns;
 	/**
 	 * amount of wanted sub-images
 	 */
@@ -24,8 +28,7 @@ public class Splitter {
 	 * @param width  the width of a given image
 	 * @param height the height of a given image
 	 */
-	public Splitter(int[] image, int width, int height) {
-		this.image = image;
+	public Splitter(int width, int height) {
 		this.width = width;
 		this.height = height;
 	}
@@ -35,23 +38,18 @@ public class Splitter {
 	 * 
 	 * @return the list of the sub-image bounds
 	 **/
-	public SubImagesRepository split() {
+	public List<SubImagesInformation> split() {
 		if (width < 0 || height < 0) {
 			throw new IllegalStateException("Width or height of the given image is < 0. "
 					+ "Please, call the setters of Splitter class and input correct data.");
 		}
 
-		if (image == null) {
-			throw new NullPointerException(
-					"The array you given is empty! " + "Call the setImage(int[] array) and try to call split() again.");
-		}
-
 		// calculate how many parts a given image will be divided
-		final int columns = (int) Math.sqrt(AMOUNT);
-		final int rows = (int) Math.sqrt(AMOUNT);
+		columns = (int) Math.sqrt(AMOUNT);
+		rows = (int) Math.sqrt(AMOUNT);
 
-		// create a new instance of the sub-image repository
-		SubImagesRepository subimages = new SubImagesRepository();
+		// create the list of sub-images
+		ArrayList<SubImagesInformation> subimages = new ArrayList<>();
 
 		for (int y = 0; y < rows; y++) {
 			for (int x = 0; x < columns; x++) {
@@ -62,17 +60,7 @@ public class Splitter {
 
 		return subimages;
 	}
-
-	/**
-	 * image is the array to hold information about a given image, each value of
-	 * this array is the color
-	 * 
-	 * @param image just must not be the null to correct splitting
-	 */
-	public void setImage(int[] image) {
-		this.image = image;
-	}
-
+	
 	/**
 	 * width of a given image
 	 * 
@@ -89,5 +77,13 @@ public class Splitter {
 	 */
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public int getColumns() {
+		return columns;
 	}
 }
