@@ -38,11 +38,9 @@ public class SplitImageCommand {
 		int columns = splitter.getColumns();
 		int rows = splitter.getRows();
 		
-		System.out.println(subimages.get(0).getWidth());
-		System.out.println(subimages.get(0).getHeight());
-
 		for (int j = 0; j < image.getHeight(); j += image.getHeight()/rows) {
 		 for (int i = 0; i < image.getWidth(); i += image.getWidth()/columns) {
+			 	
 				ImageIO.write(image.getSubimage(i, j, (int) subimages.get(counter).getWidth(), (int) subimages.get(counter).getHeight()), "jpg", new File("src/subimages/subimage_" + counter + ".png")); ;
 				counter++;
 		    }
