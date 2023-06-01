@@ -1,5 +1,16 @@
 <html>
+     <style>
+        <%@include file="../styles/main.css"%>
+    </style>
+
 <body>
-<h2>Hello World but from Home!</h2>
+ 
+
+<div class="content">
+  <!-- Page content -->
+    <h2>Hello World but from Home!</h2>
+
+</div>
+
 </body>
 </html>
