@@ -1,16 +1,25 @@
+<%@page import="java.net.Socket"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+
 <html>
-     <style>
+
+<style>
         <%@include file="../styles/main.css"%>
-    </style>
+ </style>
 
 <body>
- 
+	<div class="center">
+		<form action = "/puzzle" method = "post">
+		<h1>Welcome to the Puzzle App!</h1>
 
-<div class="content">
-  <!-- Page content -->
-    <h2>Hello World but from Home!</h2>
-
-</div>
-
+		<img src="image/baseimage.jpg" height="720" width="1280">
+		<br>
+		<div class = "center"> 
+		<button type="submit" class="center btn-primary btn-lg">Split the image and start</button>
+        </div>
+        </form>
+	</div>
 </body>
 </html>

@@ -4,17 +4,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.Socket;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 
-import mbuchatskyi.model.ImageEntity;
 import mbuchatskyi.repository.SubImageRepository;
 import mbuchatskyi.splitter.Splitter;
 import mbuchatskyi.splitter.SubImagesInformation;
@@ -34,7 +31,6 @@ public class SplitImageCommand {
 			// org.apache.commons.io library
 	       	FileUtils.copyInputStreamToFile(inputStream, file);
 	    	image = ImageIO.read(file);
-		//  image = ImageIO.read(new File("src/main/webapp/WEB-INF/baseimage.jpg"));
 		} catch (IOException e) {
 			System.out.println(e);
 		}
@@ -57,9 +53,7 @@ public class SplitImageCommand {
 				BufferedImage subimage = image.getSubimage(i, j, (int) subimages.get(counter).getWidth(),
 						(int) subimages.get(counter).getHeight());
 
-				ImageIO.write(subimage, "jpg", new File(request.getServletContext().getRealPath("/subimage") + counter + ".jpg"));
-
-			 // ImageIO.write(subimage, "jpg", new File("src/main/webapp/WEB-INF/subimages/subimage_" + counter + ".jpg"));
+				ImageIO.write(subimage, "jpg", new File("D:/WorkSpace/PuzzleApp/PuzzleApp/src/main/webapp/subimages/subimage_" + counter + ".jpg"));
 			 counter++;
 			}
 		}
