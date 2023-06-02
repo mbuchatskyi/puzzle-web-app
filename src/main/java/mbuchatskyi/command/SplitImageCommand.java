@@ -52,11 +52,12 @@ public class SplitImageCommand {
 			for (int i = 0; i < image.getWidth(); i += image.getWidth() / columns) {
 				BufferedImage subimage = image.getSubimage(i, j, (int) subimages.get(counter).getWidth(),
 						(int) subimages.get(counter).getHeight());
-
-				ImageIO.write(subimage, "jpg", new File("D:/WorkSpace/PuzzleApp/PuzzleApp/src/main/webapp/subimages/subimage_" + counter + ".jpg"));
+				
+				ImageIO.write(subimage, "jpg", new File(repo.getABSOLUTE_PATH() + "/subimage_" + counter + ".jpg"));
 			 counter++;
 			}
 		}
 		counter = 0;
+		System.out.println("The image was successfully splitted.");
 	}
 }

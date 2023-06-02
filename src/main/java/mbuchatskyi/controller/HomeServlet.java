@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mbuchatskyi.command.SplitImageCommand;
+import mbuchatskyi.repository.SubImageRepository;
 
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {

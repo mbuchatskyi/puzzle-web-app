@@ -1,4 +1,3 @@
-<%@page import="java.net.Socket"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
@@ -11,10 +10,9 @@
 
 <body>
 	<div class="center">
-		<form action = "/puzzle" method = "post">
+		<form action = "/puzzle" method = "GET">
 		<h1>Welcome to the Puzzle App!</h1>
-
-		<img src="image/baseimage.jpg" height="720" width="1280">
+		<img src="FileServlet?path=D:/images/baseimage.jpg" height="720" width="1280" />
 		<br>
 		<div class = "center"> 
 		<button type="submit" class="center btn-primary btn-lg">Split the image and start</button>
