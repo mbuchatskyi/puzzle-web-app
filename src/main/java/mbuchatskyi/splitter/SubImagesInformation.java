@@ -1,41 +1,31 @@
 package mbuchatskyi.splitter;
 
 /**
- * Instances of this class only hold data about the position, width and height of the sub-image in the original image
+ * Instances of this class only hold the data about the width and height of the
+ * sub-image, not the sub-images themselves.
  */
-
 public class SubImagesInformation {
-	/**
-	 *  the position of the sub-image in the base image
-	 */
-	private int row;
-	private int column;
-	
 	private double width;
 	private double height;
-	
+
 	/**
 	 * Constructor
 	 */
 	public SubImagesInformation(int row, int column, double width, double height) {
-		this.row = row;
-		this.column = column;
 		this.width = width;
 		this.height = height;
 	}
 
-	public int getRow() {
-		return row;
-	}
-
-	public int getColumn() {
-		return column;
-	}
-
+	/**
+	 * @return width of the sub-image
+	 */
 	public double getWidth() {
 		return width;
 	}
 
+	/**
+	 * @return height of the sub-image
+	 */
 	public double getHeight() {
 		return height;
 	}

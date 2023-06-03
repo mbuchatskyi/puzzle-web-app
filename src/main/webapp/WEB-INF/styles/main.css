@@ -87,10 +87,11 @@ figcaption{
 
 .form-section-right{
   float: right;
-  margin-top: 300px;
-   font-family: arial;
+  margin-top: 319px;
+  font-family: arial;
   font-size: 18px;
   margin-right: 30px;
+  font-weight: bold;
 }
 
 .margin-lform{

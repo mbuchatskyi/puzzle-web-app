@@ -12,13 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 
-import mbuchatskyi.repository.SubImageRepository;
+import mbuchatskyi.service.SubImageService;
 import mbuchatskyi.splitter.Splitter;
 import mbuchatskyi.splitter.SubImagesInformation;
 
 /**
- * The command class that can split a given image into many (at least 16) sub-images and save them into jpg-files.
- *
+ * The command class that can split a given image into many (at least 16)
+ * sub-images and save them into jpg-files.
+ * 
+ * @see Splitter
  */
 public class SplitImageCommand {
 	private static int counter = 0;
@@ -29,35 +31,43 @@ public class SplitImageCommand {
 		try {
 			File file = new File("baseimage.jpg");
 			// org.apache.commons.io library
-	       	FileUtils.copyInputStreamToFile(inputStream, file);
-	    	image = ImageIO.read(file);
+			FileUtils.copyInputStreamToFile(inputStream, file);
+			// reads the base image
+			image = ImageIO.read(file);
 		} catch (IOException e) {
 			System.out.println(e);
 		}
 
 		// create the new instance of Splitter
 		Splitter splitter = new Splitter(image.getWidth(), image.getHeight());
+		int amount = splitter.getAmount();
 
-		// create the list of sub-images' info by calling split() method
+		// create the list of sub-images' info 
 		List<SubImagesInformation> subimages = splitter.split();
 
 		int columns = splitter.getColumns();
 		int rows = splitter.getRows();
 
-		// get the instance of SubImageRepository
-		SubImageRepository repo = SubImageRepository.getInstance();
+		// get the instance of SubImageService
+		SubImageService service = SubImageService.getInstance();
 
-		// create the files of the sub-images and write them into sub-image repo's list
+		// set the amount of the sub-images in service
+		service.setAmount(amount);
+
+		// create the files of the sub-images 
 		for (int j = 0; j < image.getHeight(); j += image.getHeight() / rows) {
 			for (int i = 0; i < image.getWidth(); i += image.getWidth() / columns) {
 				BufferedImage subimage = image.getSubimage(i, j, (int) subimages.get(counter).getWidth(),
 						(int) subimages.get(counter).getHeight());
-				
-				ImageIO.write(subimage, "jpg", new File(repo.getABSOLUTE_PATH() + "/subimage_" + counter + ".jpg"));
-			 counter++;
+
+				ImageIO.write(subimage, "jpg", new File(service.getABSOLUTE_PATH() + "/subimage_" + counter + ".jpg"));
+				counter++;
 			}
 		}
 		counter = 0;
-		System.out.println("The image was successfully splitted.");
+
+		// mess up some sub-images in puzzle
+		service.swap(0, 12);
+		service.swap(3, 15);
 	}
 }

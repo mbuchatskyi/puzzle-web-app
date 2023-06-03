@@ -31,15 +31,15 @@
 			<div class="form-section-right">
 
 				<c:choose>
-					<c:when test="${ not empty truePuzzle }">
-						<span style="color: #ff0000;">Congratulations!</span>
+					<c:when test="${ not empty truePuzzle}">
+						<span style="color: #009900;">Puzzle is solved! ;)</span>
 						<br>
 					</c:when>
 				</c:choose>
 				
 				<c:choose>
-					<c:when test="${ not empty falsePuzzle }">
-						<span style="color: #ff0000;">Try more!</span>
+					<c:when test="${ not empty falsePuzzle}">
+						<span style="color: #ff0000;">It's messed up :(</span>
 						<br>
 					</c:when>
 				</c:choose>

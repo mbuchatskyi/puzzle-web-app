@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mbuchatskyi.command.SplitImageCommand;
-import mbuchatskyi.repository.SubImageRepository;
 
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
@@ -21,10 +20,12 @@ public class HomeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/pages/home.jsp");
 		
+		// gets the base image
 		ServletContext context = getServletContext();
 		InputStream inputStream = context
 				.getResourceAsStream("WEB-INF/baseimage.jpg");
 		
+		// execute split command
 		new SplitImageCommand().execute(inputStream, request, response);
 		
 		requestDispatcher.forward(request, response);

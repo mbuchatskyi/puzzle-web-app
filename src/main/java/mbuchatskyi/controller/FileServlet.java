@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * The File servlet for serving from absolute path.
+ * @author BalusC
+ */
 public class FileServlet extends HttpServlet{
 	private static final int DEFAULT_BUFFER_SIZE = 10240; // ..bytes = 10KB.
 	
