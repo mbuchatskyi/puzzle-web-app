@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class SubImage {
 	private List<Color> leftBorder = new ArrayList<>();
-	private List<Color> rightBorer = new ArrayList<>();
+	private List<Color> rightBorder = new ArrayList<>();
 	private List<Color> bottomBorder = new ArrayList<>();
 	private List<Color> topBorder = new ArrayList<>();
 	
@@ -64,7 +64,7 @@ public class SubImage {
 		
         for (int y = 0; y < height; y++) {
             Color color = new Color(borderPixels[y]);
-            rightBorer.add(color);
+            rightBorder.add(color);
         }
 	}
 	
@@ -104,8 +104,8 @@ public class SubImage {
 		return leftBorder;
 	}
 
-	public List<Color> getRightBorer() {
-		return rightBorer;
+	public List<Color> getRightBorder() {
+		return rightBorder;
 	}
 
 	public List<Color> getBottomBorder() {
