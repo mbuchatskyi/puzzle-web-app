@@ -118,5 +118,9 @@ public class SubImage {
 
 	public File getFile() {
 		return file;
+	}
+
+	public BufferedImage getImage() {
+		return image;
 	}	
 }

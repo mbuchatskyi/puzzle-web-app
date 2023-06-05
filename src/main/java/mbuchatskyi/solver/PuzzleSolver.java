@@ -1,9 +1,13 @@
 package mbuchatskyi.solver;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import mbuchatskyi.model.SubImage;
 import mbuchatskyi.service.SubImageService;
@@ -11,7 +15,7 @@ import mbuchatskyi.service.SubImageService;
 public class PuzzleSolver {
 	private static List<SubImage> subimages = new ArrayList<>();
 	private List<SubImage> solvedPuzzle = new ArrayList<>();
-
+	
 	private static SubImageService service = SubImageService.getInstance();
 
 	private void init() {
@@ -79,53 +83,62 @@ public class PuzzleSolver {
 
 		return fitImage;
 	}
+	
+	private int counter = 8;
 
-	private void mainAlgo() {
+	public void mainAlgo() throws IOException {
 		init();
 		// add first element to solved puzzle
 		SubImage first = subimages.get(0);
+
+		ImageIO.write(first.getImage(), "jpg", new File(service.getABSOLUTE_PATH() + "/subimage_" + 0 + ".jpg"));
+		
 		subimages.remove(first);
 		solvedPuzzle.add(first);
-
+		
 		SubImage fitImage = calculateFitImageLeftBorder(first);
 		subimages.remove(fitImage);
 		solvedPuzzle.add(fitImage);
+		
+		ImageIO.write(fitImage.getImage(), "jpg", new File(service.getABSOLUTE_PATH() + "/subimage_" + 1 + ".jpg"));
 
-		for (int i = 0; i < 2; i++) {
+		for (int i = 2; i < 4; i++) {
 			fitImage = calculateFitImageLeftBorder(fitImage);
 			subimages.remove(fitImage);
 			solvedPuzzle.add(fitImage);
+			
+			ImageIO.write(fitImage.getImage(), "jpg", new File(service.getABSOLUTE_PATH() + "/subimage_" + i + ".jpg"));
 		}
 
 		fitImage = calculateFitImageTopBorder(first);
 		subimages.remove(fitImage);
 		solvedPuzzle.add(fitImage);
+		
+		ImageIO.write(fitImage.getImage(), "jpg", new File(service.getABSOLUTE_PATH() + "/subimage_" + 4 + ".jpg"));
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 5; i < 8; i++) {
 			fitImage = calculateFitImageLeftBorder(fitImage);
 			subimages.remove(fitImage);
 			solvedPuzzle.add(fitImage);
+			
+			ImageIO.write(fitImage.getImage(), "jpg", new File(service.getABSOLUTE_PATH() + "/subimage_" + i + ".jpg"));
 		}
-
-		for (int j = 4; j < 9; j += 4) {
+		
+		for (int j = 4, k = 8; j < 9; j += 4, k += 4 ) {
 			fitImage = calculateFitImageTopBorder(solvedPuzzle.get(j));
 			subimages.remove(fitImage);
 			solvedPuzzle.add(fitImage);
-
+			
+			ImageIO.write(fitImage.getImage(), "jpg", new File(service.getABSOLUTE_PATH() + "/subimage_" + k + ".jpg"));
+			
+			counter++;
 			for (int i = 0; i < 3; i++) {
 				fitImage = calculateFitImageLeftBorder(fitImage);
 				subimages.remove(fitImage);
 				solvedPuzzle.add(fitImage);
+				ImageIO.write(fitImage.getImage(), "jpg", new File(service.getABSOLUTE_PATH() + "/subimage_" + counter + ".jpg"));
+				counter++;
 			}
 		}
-
-		for (int i = 0; i < 16; i++) {
-			System.out.println(solvedPuzzle.get(i).getFile().getName());
-		}
-	}
-
-	public static void main(String[] args) {
-		PuzzleSolver puzzleSolver = new PuzzleSolver();
-		puzzleSolver.mainAlgo();
 	}
 }
