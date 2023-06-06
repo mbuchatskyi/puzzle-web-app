@@ -8,8 +8,9 @@
 <body>
 
 	<div class="center">
-		<h2>Here you can swap the puzzles and detect if they make up the
-			base image</h2>
+		<h2> Good choice! </h2>
+		<h3>Here you can swap the puzzles and detect if they make up the
+			base image</h3>
 		<div class="form-section">
 			<form action="/puzzle" method="GET">
 				<a>Swap Puzzles:</a> <br> <select name="prio">

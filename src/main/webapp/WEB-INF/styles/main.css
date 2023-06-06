@@ -2,6 +2,21 @@ html, body{
 	min-height:100%;
 }
 
+h1 {
+	color: black;
+	font-family: arial;
+}
+
+h2 {
+	color: black;
+	font-family: arial;
+}
+
+h3{
+	font-weight: normal;
+	font-family: arial;
+}
+
 body{
 	height:100vh;
 }
@@ -106,4 +121,5 @@ figcaption{
 	margin-top: 650px;
 	margin-left: 680px;
 }
+
 

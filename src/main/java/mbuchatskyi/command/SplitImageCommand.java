@@ -65,6 +65,8 @@ public class SplitImageCommand {
 			}
 		}
 		counter = 0;
+		
+		System.out.println("Image was successfully split");
 
 		// mess up some sub-images in puzzle
 		service.swap(0, 12);

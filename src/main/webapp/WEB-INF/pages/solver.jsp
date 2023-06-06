@@ -7,7 +7,7 @@
 </style>
 <body>
 <div class="center">
-		<h2>The puzzle solved by algorithm</h2>
+		<h2>The puzzle solved by the algorithm</h2>
 
 		<div class="container">
 		
