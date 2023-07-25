@@ -13,7 +13,7 @@ import mbuchatskyi.solver.PuzzleSolver;
 @WebServlet("/solver")
 public class SolverServlet extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/pages/solver.jsp");
 
 		new PuzzleSolver().mainAlgo();

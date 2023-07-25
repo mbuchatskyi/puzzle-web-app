@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <html>
+<title>Solved Puzzle</title>
 <style>
   <%@include file="../styles/main.css"%>
 </style>

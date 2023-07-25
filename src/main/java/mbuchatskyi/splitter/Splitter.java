@@ -56,7 +56,7 @@ public class Splitter {
 
 		for (int y = 0; y < rows; y++) {
 			for (int x = 0; x < columns; x++) {
-				SubImagesInformation img = new SubImagesInformation(x, y, width / columns, height / columns);
+				SubImagesInformation img = new SubImagesInformation(width / columns, height / columns);
 				subimages.add(img);
 			}
 		}

@@ -2,9 +2,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <html>
+<title>Puzzle</title>
 <style>
   <%@include file="../styles/main.css"%>
 </style>
+
 <body>
 
 	<div class="center">
@@ -139,7 +141,7 @@
 			</figure>
 		</div>
 		
-		<form action="/solver">
+		<form action="/solver" method="POST">
 		<button type="submit" class="center btn-primary btn-lg">Let the algorithm do it</button>
         </form>
 	</div>

@@ -2,7 +2,6 @@ package mbuchatskyi.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.http.HttpRequest;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -26,17 +25,17 @@ public class HomeServlet extends HttpServlet {
 		}
 
 		if (request.getParameter("image") != null) {
-			switch (Integer.parseInt(request.getParameter("image"))) {
-			case 1:
+			switch (request.getParameter("image")) {
+			case "1":
 				chooseImageToSplit(1, request, response);
 				break;
-			case 2:
+			case "2":
 				chooseImageToSplit(2, request, response);
 				break;
-			case 3:
+			case "3":
 				chooseImageToSplit(3, request, response);
 				break;
-			case 4:
+			case "4":
 				chooseImageToSplit(4, request, response);
 				break;
 			default:

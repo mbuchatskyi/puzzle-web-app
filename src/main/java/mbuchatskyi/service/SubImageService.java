@@ -3,6 +3,7 @@ package mbuchatskyi.service;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import mbuchatskyi.model.ImageEntity;
@@ -91,7 +92,7 @@ public class SubImageService {
 		// gets the ImageEntity with actual position which equals firstposition param
 		ImageEntity firstImg = getImages().stream().filter(e -> e.getActualPosition() == firstposition)
 				.collect(Collectors.toList()).get(0);
-
+				
 		// gets the ImageEntity with actual position which equals firstposition param
 		ImageEntity secondImg = getImages().stream().filter(e -> e.getActualPosition() == secondposition)
 				.collect(Collectors.toList()).get(0);

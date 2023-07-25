@@ -11,7 +11,7 @@ public class SubImagesInformation {
 	/**
 	 * Constructor
 	 */
-	public SubImagesInformation(int row, int column, double width, double height) {
+	public SubImagesInformation(double width, double height) {
 		this.width = width;
 		this.height = height;
 	}
